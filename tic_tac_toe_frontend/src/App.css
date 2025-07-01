@@ -1,24 +1,29 @@
-/* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
+  /* Project theme colors (light) */
+  --primary: #1976d2;
+  --secondary: #ff9800;
+  --accent: #43a047;
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
   --text-primary: #282c34;
-  --text-secondary: #61dafb;
+  --text-secondary: #1976d2;
   --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --button-bg: #1976d2;
+  --button-text: #fff;
 }
 
 [data-theme="dark"] {
-  /* Dark theme colors */
+  /* Matching dark mode colors */
+  --primary: #1976d2;
+  --secondary: #ff9800;
+  --accent: #43a047;
   --bg-primary: #1a1a1a;
   --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
+  --text-primary: #fff;
+  --text-secondary: #ff9800;
   --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+  --button-bg: #1976d2;
+  --button-text: #fff;
 }
 
 .App {
@@ -26,38 +31,73 @@
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Buttons, inputs, containers for minimal modern look */
+.btn {
+  padding: 8px 20px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 4px;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 4px rgba(25, 118, 210, 0.08);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn:hover,
+.btn:focus {
+  background: var(--accent);
+  outline: none;
 }
-
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.input {
+  padding: 10px 12px;
+  margin: 6px 0;
+  border: 1px solid var(--border-color);
+  border-radius: 7px;
+  background: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  width: 100%;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border 0.16s;
 }
-
-.App-link {
+.input:focus {
+  border: 1.5px solid var(--primary);
+  outline: none;
+}
+.container {
+  background: var(--bg-secondary);
+  border-radius: 21px;
+  box-shadow: 0 2px 16px rgba(25, 118, 210, 0.04);
+  padding: 28px 38px 32px 38px;
+}
+table {
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-size: 1.03rem;
+  width: 100%;
+}
+th, td {
+  padding: 7px 12px;
+  text-align: center;
+}
+th {
+  background: var(--bg-secondary);
   color: var(--text-secondary);
-  transition: color 0.3s ease;
+}
+tr:nth-child(odd) {
+  background: var(--bg-secondary);
+}
+tr:nth-child(even) {
+  background: var(--bg-primary);
 }
 
+/* Theme switch */
 .theme-toggle {
   position: absolute;
   top: 20px;
@@ -70,31 +110,23 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
-
 .theme-toggle:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  opacity: 0.93;
 }
-
 .theme-toggle:active {
   transform: translateY(0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive design for mobile */
 @media (max-width: 768px) {
+  .container {
+    padding: 14px 6vw 18px 6vw;
+    border-radius: 12px;
+  }
   .theme-toggle {
     top: 10px;
     right: 10px;
